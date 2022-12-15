@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  api:
+    container_name: express_boilerplate
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 4000:4000
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017/express_boilerplate
+      - PORT=4000
+    volumes:
+      - "./src:/app/src"
+      - /app/node_modules
+    networks:
+      - trandung
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb:/data/db
+    networks:
+      - trandung
+volumes:
+  mongodb:
+networks:
+  trandung:
