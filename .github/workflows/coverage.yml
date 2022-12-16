@@ -1,21 +1,9 @@
 name: Coverage
 on:
   push:
-    branches: [ "master", "test"]
-    paths:
-      - '!README.md'
-      - '!.gitignore'
-      - '!jest.config.js'
-      - '!package.json'
-      - '!package-lock.json'
-      - '!tsconfig.json'
-      - '!.dockerignore'
-      - '!.prettierrc'
-      - '!docker-compose.yml'
-      - '!Dockerfile'
+    branches: [ "test", "dev", "master"]
   pull_request:
     type: [opened, reopened, synchronize, labeled, unlabeled]
-    branches: [ "dev", "test", "master"]
   workflow_dispatch:
 jobs:
   Coverage-report:

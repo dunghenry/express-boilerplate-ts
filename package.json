@@ -7,7 +7,8 @@
         "dev": "npm run build && nodemon --inspect --legacy-watch dist/index.js ",
         "prod": "nodemon --legacy-watch dist/index.js",
         "build": "tsc",
-        "test": "jest --coverage --forceExit",
+        "test-coverage": "jest --coverage --forceExit",
+        "test": "jest",
         "fm": "prettier --single-quote --trailing-comma all --tab-width 4 --write src/**/*.{js,json,jsx,css,scss,ts,tsx}",
         "format": "lint-staged",
         "prepare": "husky install"

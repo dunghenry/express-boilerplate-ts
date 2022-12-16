@@ -1,7 +1,7 @@
 name: Node.js CI
 on:
   push:
-    branches: [ "master", "test"]
+    branches: [ "test", "dev", "master"]
     paths:
       - '!README.md'
       - '!.gitignore'
@@ -9,12 +9,8 @@ on:
       - '!package.json'
       - '!package-lock.json'
       - '!tsconfig.json'
-      - '!.dockerignore'
-      - '!.prettierrc'
-      - '!docker-compose.yml'
-      - '!Dockerfile'
   pull_request:
-    branches: [ "dev", "test", "master"]
+    branches: [ "dev", "test", "master" ]
 jobs:
   build:
     runs-on: ubuntu-latest
