@@ -1,0 +1,35 @@
+name: Coverage
+on:
+  push:
+    branches: [ "master", "test"]
+    paths:
+      - '!README.md'
+      - '!.gitignore'
+      - '!jest.config.js'
+      - '!package.json'
+      - '!package-lock.json'
+      - '!tsconfig.json'
+      - '!.dockerignore'
+      - '!.prettierrc'
+      - '!docker-compose.yml'
+      - '!Dockerfile'
+  pull_request:
+    type: [opened, reopened, synchronize, labeled, unlabeled]
+    branches: [ "dev", "test", "master"]
+  workflow_dispatch:
+jobs:
+  Coverage-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install
+      - uses: ArtiomTr/jest-coverage-report-action@v2
+        id: coverage
+        with:
+          output: report-markdown
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          threshold: 95
+          skip-step: install
+      - uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          message: ${{ steps.coverage.outputs.report }}
