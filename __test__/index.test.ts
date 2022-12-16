@@ -1,6 +1,7 @@
 import request from 'supertest';
 import { Express } from 'express-serve-static-core';
 import { app } from '../src';
+import { after } from 'node:test';
 let server: Express;
 describe('APP should say "Hello World!"', () => {
     beforeAll(() => {
@@ -15,5 +16,9 @@ describe('APP should say "Hello World!"', () => {
                 expect(res.body).toMatchObject({ message: `Hello World!` });
                 done();
             });
+    });
+    afterAll((done) => {
+        server.disable;
+        done();
     });
 });

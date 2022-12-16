@@ -31,7 +31,7 @@ const {
     MongoDB,
 }: { MongoDB: MongoDBTransportInstance } = require('winston-mongodb');
 const mongoTransport = new MongoDB({
-    db: process.env.MONGODB_URI,
+    db: process.env.MONGODB_URI as string,
     options: {
         useNewUrlParser: true,
         useUnifiedTopology: true,

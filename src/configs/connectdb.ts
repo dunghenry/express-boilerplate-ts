@@ -5,8 +5,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 const connectDB = async () => {
     try {
-        mongoose.set('strictQuery', false);
-        await mongoose.connect(process.env.MONGODB_URI as string, {});
+        // mongoose.set('strictQuery', false);
+        await mongoose.connect(process.env.MONGODB_URI as string);
         console.log(colors.green('Connect MongoDB successfully!!'));
     } catch (error: any) {
         console.log(error);
